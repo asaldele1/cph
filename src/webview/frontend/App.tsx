@@ -10,7 +10,7 @@ import {
     RunningCommand,
     WebViewpersistenceState,
 } from '../../types';
-import { stepikResult } from '../../companion'
+import { stepikResult } from '../../companion';
 import CaseView from './CaseView';
 declare const vscodeApi: {
     postMessage: (message: WebviewToVSEvent) => void;
@@ -357,7 +357,7 @@ function Judge(props: {
                     )}
                 </div>
             );
-         }else if (url.hostname == 'stepik.org') {
+        } else if (url.hostname == 'stepik.org') {
             return (
                 <div className="pad-10 submit-area">
                     <button className="btn" onClick={submitStepik}>

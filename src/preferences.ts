@@ -195,7 +195,9 @@ export const getLanguageIdStepik = (srcPath: string): string => {
         }
 
         case '.py': {
-            compiler = getPreference('language.python.SubmissionCompilerStepik');
+            compiler = getPreference(
+                'language.python.SubmissionCompilerStepik',
+            );
             break;
         }
 
@@ -205,10 +207,12 @@ export const getLanguageIdStepik = (srcPath: string): string => {
         }
 
         case '.hs': {
-            compiler = getPreference('language.haskell.SubmissionCompilerStepik');
+            compiler = getPreference(
+                'language.haskell.SubmissionCompilerStepik',
+            );
             break;
         }
     }
-    if (compiler == null) return "";
-    return compiler
+    if (compiler == null) return '';
+    return compiler;
 };

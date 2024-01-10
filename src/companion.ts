@@ -24,7 +24,7 @@ import os from 'os';
 const emptyResponse: CphEmptyResponse = { empty: true };
 let savedResponse: CphEmptyResponse | CphSubmitResponse = emptyResponse;
 const COMPANION_LOGGING = false;
-export let stepikResult = "";
+export let stepikResult = '';
 
 export const submitKattisProblem = (problem: Problem) => {
     globalThis.reporter.sendTelemetryEvent(telmetry.SUBMIT_TO_KATTIS);
@@ -106,7 +106,16 @@ export const submitStepikProblem = (problem: Problem) => {
             submitPath = `${homedir}/.stepik/submitter.py`;
         }
     }
-    const pyshell = spawn('python', [submitPath, 'submit', srcPath, '-l', getLanguageIdStepik(problem.srcPath), '--link', problem.url, "--silent"]);
+    const pyshell = spawn('python', [
+        submitPath,
+        'submit',
+        srcPath,
+        '-l',
+        getLanguageIdStepik(problem.srcPath),
+        '--link',
+        problem.url,
+        '--silent',
+    ]);
 
     pyshell.stdout.on('data', function (data) {
         console.log(data.toString());

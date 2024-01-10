@@ -1,6 +1,10 @@
 import { getProblem } from './parser';
 import * as vscode from 'vscode';
-import { storeSubmitProblem, submitKattisProblem, submitStepikProblem } from './companion';
+import {
+    storeSubmitProblem,
+    submitKattisProblem,
+    submitStepikProblem,
+} from './companion';
 import { getJudgeViewProvider } from './extension';
 import telmetry from './telmetry';
 
