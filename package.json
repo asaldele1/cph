@@ -98,6 +98,11 @@
                     ],
                     "description": "The compiler chosen in the drop down during Codeforces submission for c"
                 },
+                "cph.language.c.SubmissionCompilerStepik": {
+                    "type": "string",
+                    "default": "c++11",
+                    "description": "The compiler chosen during Stepik submission for c"
+                },
                 "cph.language.c.Command": {
                     "type": "string",
                     "default": "gcc",
@@ -125,6 +130,11 @@
                     ],
                     "description": "The compiler chosen in the drop down during Codeforces submission for cpp"
                 },
+                "cph.language.cpp.SubmissionCompilerStepik": {
+                    "type": "string",
+                    "default": "c++11",
+                    "description": "The compiler chosen during Stepik submission for cpp"
+                },
                 "cph.language.cpp.Command": {
                     "type": "string",
                     "default": "g++",
@@ -148,6 +158,11 @@
                     ],
                     "description": "The compiler chosen in the drop down during Codeforces submission for python"
                 },
+                "cph.language.python.SubmissionCompilerStepik": {
+                    "type": "string",
+                    "default": "python3",
+                    "description": "The compiler chosen during Stepik submission for python"
+                },
                 "cph.language.python.Command": {
                     "type": "string",
                     "default": "python3",
@@ -166,6 +181,11 @@
                         "Rust 1.66.0 (2021)"
                     ],
                     "description": "The compiler chosen in the drop down during Codeforces submission for rust"
+                },
+                "cph.language.rust.SubmissionCompilerStepik": {
+                    "type": "string",
+                    "default": "rust",
+                    "description": "The compiler chosen during Stepik submission for rust"
                 },
                 "cph.language.rust.Command": {
                     "type": "string",
@@ -186,6 +206,11 @@
                     ],
                     "description": "The compiler chosen in the drop down during Codeforces submission for go"
                 },
+                "cph.language.go.SubmissionCompilerStepik": {
+                    "type": "string",
+                    "default": "go",
+                    "description": "The compiler chosen during Stepik submission for go"
+                },
                 "cph.language.go.Command": {
                     "type": "string",
                     "default": "go",
@@ -204,6 +229,11 @@
                         "Haskell GHC 8.10.1"
                     ],
                     "description": "The compiler chosen in the drop down during Codeforces submission for haskell"
+                },
+                "cph.language.haskell.SubmissionCompilerStepik": {
+                    "type": "string",
+                    "default": "haskel 7.10",
+                    "description": "The compiler chosen during Stepik submission for haskell"
                 },
                 "cph.language.haskell.Command": {
                     "type": "string",
@@ -225,6 +255,11 @@
                     ],
                     "description": "The compiler chosen in the drop down during Codeforces submission for java"
                 },
+                "cph.language.java.SubmissionCompilerStepik": {
+                    "type": "string",
+                    "default": "java8",
+                    "description": "The compiler chosen during Stepik submission for java"
+                },
                 "cph.language.java.Command": {
                     "type": "string",
                     "default": "javac",
@@ -243,6 +278,11 @@
                         "Node.js 15.8.0 (64bit)"
                     ],
                     "description": "The compiler chosen in the drop down during Codeforces submission for js"
+                },
+                "cph.language.js.SubmissionCompilerStepik": {
+                    "type": "string",
+                    "default": "javascript",
+                    "description": "The compiler chosen during Stepik submission for js"
                 },
                 "cph.language.js.Command": {
                     "type": "string",

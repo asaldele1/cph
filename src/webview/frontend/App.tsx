@@ -10,6 +10,7 @@ import {
     RunningCommand,
     WebViewpersistenceState,
 } from '../../types';
+import { stepikResult } from '../../companion'
 import CaseView from './CaseView';
 declare const vscodeApi: {
     postMessage: (message: WebviewToVSEvent) => void;
@@ -202,6 +203,15 @@ function Judge(props: {
         setWaitingForSubmit(true);
     };
 
+    const submitStepik = () => {
+        vscodeApi.postMessage({
+            command: 'submitStepik',
+            problem,
+        });
+
+        setWaitingForSubmit(true);
+    };
+
     const debounceFocusLast = () => {
         setTimeout(() => {
             setFocusLast(false);
@@ -345,6 +355,18 @@ function Judge(props: {
                             </small>
                         </>
                     )}
+                </div>
+            );
+         }else if (url.hostname == 'stepik.org') {
+            return (
+                <div className="pad-10 submit-area">
+                    <button className="btn" onClick={submitStepik}>
+                        <span className="icon">
+                            <i className="codicon codicon-cloud-upload"></i>
+                        </span>{' '}
+                        Submit on Stepik
+                    </button>
+                    <div id="stepik-result">{stepikResult}</div>
                 </div>
             );
         }

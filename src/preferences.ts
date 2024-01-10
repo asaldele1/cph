@@ -164,3 +164,51 @@ export const getLanguageId = (srcPath: string): number => {
     console.error("Couldn't find id for compiler " + compiler);
     return -1;
 };
+
+export const getLanguageIdStepik = (srcPath: string): string => {
+    const extension = path.extname(srcPath);
+    let compiler = null;
+    switch (extension) {
+        case '.cpp': {
+            compiler = getPreference('language.cpp.SubmissionCompilerStepik');
+            break;
+        }
+
+        case '.java': {
+            compiler = getPreference('language.java.SubmissionCompilerStepik');
+            break;
+        }
+
+        case '.js': {
+            compiler = getPreference('language.js.SubmissionCompilerStepik');
+            break;
+        }
+
+        case '.c': {
+            compiler = getPreference('language.c.SubmissionCompilerStepik');
+            break;
+        }
+
+        case '.rs': {
+            compiler = getPreference('language.rust.SubmissionCompilerStepik');
+            break;
+        }
+
+        case '.py': {
+            compiler = getPreference('language.python.SubmissionCompilerStepik');
+            break;
+        }
+
+        case '.go': {
+            compiler = getPreference('language.go.SubmissionCompilerStepik');
+            break;
+        }
+
+        case '.hs': {
+            compiler = getPreference('language.haskell.SubmissionCompilerStepik');
+            break;
+        }
+    }
+    if (compiler == null) return "";
+    return compiler
+};

@@ -14,27 +14,35 @@ export type prefSection =
     | 'general.menuChoices'
     | 'language.c.Args'
     | 'language.c.SubmissionCompiler'
+    | 'language.c.SubmissionCompilerStepik'
     | 'language.c.Command'
     | 'language.cpp.Args'
     | 'language.cpp.SubmissionCompiler'
+    | 'language.cpp.SubmissionCompilerStepik'
     | 'language.cpp.Command'
     | 'language.go.Args'
     | 'language.go.SubmissionCompiler'
+    | 'language.go.SubmissionCompilerStepik'
     | 'language.go.Command'
     | 'language.rust.Args'
     | 'language.rust.SubmissionCompiler'
+    | 'language.rust.SubmissionCompilerStepik'
     | 'language.rust.Command'
     | 'language.java.Args'
     | 'language.java.SubmissionCompiler'
+    | 'language.java.SubmissionCompilerStepik'
     | 'language.java.Command'
     | 'language.js.Args'
     | 'language.js.SubmissionCompiler'
+    | 'language.js.SubmissionCompilerStepik'
     | 'language.js.Command'
     | 'language.python.Args'
     | 'language.python.SubmissionCompiler'
+    | 'language.python.SubmissionCompilerStepik'
     | 'language.python.Command'
     | 'language.haskell.Args'
     | 'language.haskell.SubmissionCompiler'
+    | 'language.haskell.SubmissionCompilerStepik'
     | 'language.haskell.Command'
     | 'general.retainWebviewContext'
     | 'general.autoShowJudge'
@@ -133,6 +141,10 @@ export type SubmitKattis = {
     command: 'submitKattis';
 } & WebviewMessageCommon;
 
+export type SubmitStepik = {
+    command: 'submitStepik';
+} & WebviewMessageCommon;
+
 export type GetInitialProblem = {
     command: 'get-initial-problem';
 };
@@ -151,7 +163,8 @@ export type WebviewToVSEvent =
     | DeleteTcsCommand
     | SubmitCf
     | OnlineJudgeEnv
-    | SubmitKattis;
+    | SubmitKattis
+    | SubmitStepik;
 
 export type RunningCommand = {
     command: 'running';
