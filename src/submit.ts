@@ -74,12 +74,12 @@ export const submitToStepik = async () => {
         url = new URL(problem.url);
     } catch (err) {
         console.error(err);
-        vscode.window.showErrorMessage('Not a kattis problem.');
+        vscode.window.showErrorMessage('Not a stepik problem.');
         return;
     }
 
     if (url.hostname !== 'stepik.org') {
-        vscode.window.showErrorMessage('Not a kattis problem.');
+        vscode.window.showErrorMessage('Not a stepik problem.');
         return;
     }
 

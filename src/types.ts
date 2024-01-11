@@ -200,6 +200,11 @@ export type SubmitFinishedCommand = {
     command: 'submit-finished';
 };
 
+export type StepikSubmitFinishedCommand = {
+    command: 'stepik-submit-finished',
+    result: string;
+};
+
 export type NewProblemCommand = {
     command: 'new-problem';
     problem: Problem | undefined;
@@ -213,6 +218,7 @@ export type VSToWebViewMessage =
     | CompilingStopCommand
     | WaitingForSubmitCommand
     | SubmitFinishedCommand
+    | StepikSubmitFinishedCommand
     | NotRunningCommand
     | NewProblemCommand;
 

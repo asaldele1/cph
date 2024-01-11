@@ -10,7 +10,6 @@ import {
     RunningCommand,
     WebViewpersistenceState,
 } from '../../types';
-import { stepikResult } from '../../companion';
 import CaseView from './CaseView';
 declare const vscodeApi: {
     postMessage: (message: WebviewToVSEvent) => void;
@@ -36,6 +35,7 @@ function Judge(props: {
     const [waitingForSubmit, setWaitingForSubmit] = useState<boolean>(false);
     const [onlineJudgeEnv, setOnlineJudgeEnv] = useState<boolean>(false);
     const [remoteMessage, setRemoteMessage] = useState<string>('');
+    const [stepikResult, setStepikResult] = useState<string>('');
 
     // Update problem if cases change. The only place where `updateProblem` is
     // allowed to ensure sync.
@@ -90,6 +90,10 @@ function Judge(props: {
                 case 'submit-finished': {
                     setWaitingForSubmit(false);
                     break;
+                }
+                case 'stepik-submit-finished': {
+                    setWaitingForSubmit(false);
+                    setStepikResult(data.result);
                 }
                 case 'waiting-for-submit': {
                     setWaitingForSubmit(true);
@@ -310,7 +314,8 @@ function Judge(props: {
         }
         if (
             url.hostname !== 'codeforces.com' &&
-            url.hostname !== 'open.kattis.com'
+            url.hostname !== 'open.kattis.com' &&
+            url.hostname !== 'stepik.org'
         ) {
             return null;
         }
@@ -359,14 +364,16 @@ function Judge(props: {
             );
         } else if (url.hostname == 'stepik.org') {
             return (
-                <div className="pad-10 submit-area">
+                                <div className="pad-10 submit-area">
                     <button className="btn" onClick={submitStepik}>
                         <span className="icon">
                             <i className="codicon codicon-cloud-upload"></i>
                         </span>{' '}
                         Submit on Stepik
                     </button>
-                    <div id="stepik-result">{stepikResult}</div>
+                    <br />
+                    {waitingForSubmit && (<p>Submitting...</p>)}
+                    <span style={{whiteSpace: "pre-line"}}>{stepikResult}</span>
                 </div>
             );
         }
@@ -492,7 +499,7 @@ function Judge(props: {
                 </div>
             </div>
 
-            {waitingForSubmit && (
+            {(waitingForSubmit && new URL(problem.url).hostname == 'codeforces.com') && (
                 <div className="margin-10">
                     <span className="loader"></span> Waiting for extension ...
                     <br />

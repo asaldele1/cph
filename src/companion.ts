@@ -24,7 +24,6 @@ import os from 'os';
 const emptyResponse: CphEmptyResponse = { empty: true };
 let savedResponse: CphEmptyResponse | CphSubmitResponse = emptyResponse;
 const COMPANION_LOGGING = false;
-export let stepikResult = '';
 
 export const submitKattisProblem = (problem: Problem) => {
     globalThis.reporter.sendTelemetryEvent(telmetry.SUBMIT_TO_KATTIS);
@@ -83,11 +82,11 @@ export const submitStepikProblem = (problem: Problem) => {
     let submitPath = `${homedir}/.stepik/submitter.py`;
     if (process.platform == 'win32') {
         if (
-            !existsSync(`${homedir}\\.stepik\\.client_file`) ||
+            !existsSync(`${homedir}\\.stepik\\client_file`) ||
             !existsSync(`${homedir}\\.stepik\\submitter.py`)
         ) {
             vscode.window.showErrorMessage(
-                `Please ensure .client_file and submitter.py are present in ${homedir}\\.stepik`,
+                `Please ensure client_file and submitter.py are present in ${homedir}\\.stepik`,
             );
             return;
         } else {
@@ -95,11 +94,11 @@ export const submitStepikProblem = (problem: Problem) => {
         }
     } else {
         if (
-            !existsSync(`${homedir}/.stepik/.client_file`) ||
+            !existsSync(`${homedir}/.stepik/client_file`) ||
             !existsSync(`${homedir}/.stepik/submitter.py`)
         ) {
             vscode.window.showErrorMessage(
-                `Please ensure .client_file and submitter.py are present in ${homedir}/.stepik`,
+                `Please ensure client_file and submitter.py are present in ${homedir}/.stepik`,
             );
             return;
         } else {
@@ -119,12 +118,14 @@ export const submitStepikProblem = (problem: Problem) => {
 
     pyshell.stdout.on('data', function (data) {
         console.log(data.toString());
-        stepikResult += data.toString();
         getJudgeViewProvider().extensionToJudgeViewMessage({
             command: 'new-problem',
             problem,
         });
-        ({ command: 'submit-finished' });
+        getJudgeViewProvider().extensionToJudgeViewMessage({
+            command: 'stepik-submit-finished',
+            result: data.toString()
+        });
     });
     pyshell.stderr.on('data', function (data) {
         console.log(data.tostring());
